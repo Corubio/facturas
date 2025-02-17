@@ -59,7 +59,6 @@ const App = () => {
     const creditNotes = creditNoteInvoices.filter((creditNote) => selectedCreditNotes.has(creditNote.id));
 
     setInvoicesAssigned({received, creditNotes});
-    console.log(invoicesAssigned);
   };
 
   return (
