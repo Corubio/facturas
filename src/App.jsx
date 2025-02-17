@@ -38,10 +38,6 @@ const App = () => {
 
       setReceivedInvoices(received);
       setCreditNoteInvoices(creditNote);
-
-      console.log("API Response:", data);
-      console.log("Received Invoices:", received);
-      console.log("Credit Notes:", creditNote);
     });
   }, []);
 
@@ -62,9 +58,7 @@ const App = () => {
     const received = receivedInvoices.filter((invoice) => selectedReceived.has(invoice.id));
     const creditNotes = creditNoteInvoices.filter((creditNote) => selectedCreditNotes.has(creditNote.id));
 
-    console.log("Received Invoices Assigned:", received);
-    console.log("Credit Notes Assigned:", creditNotes);
-    setInvoicesAssigned({received: received, creditNotes: creditNotes});
+    setInvoicesAssigned({received, creditNotes});
     console.log(invoicesAssigned);
   };
 
@@ -89,10 +83,13 @@ const App = () => {
       )}
 
       {selectedCreditNotes.size > 0 && selectedReceived.size > 0 && (
-        <AssignButton
-          onAssign={assignInvoices}
-          selectedReceinvoicesAssignedived={invoicesAssigned}
-        />
+        <div
+          onClick={assignInvoices}
+        >
+          <AssignButton
+            invoicesAssigned={invoicesAssigned}
+          />
+        </div>
       )}
 
     </div>
